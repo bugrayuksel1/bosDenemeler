@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  overflow: hidden;
+}
+.productList {
+  overflow: scroll;
+  width: 800px;
+  border: 5px solid white;
+  border-radius: 10px;
+}
+.cardLink {
+  width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid white;
+  border-radius: 10px;
+  overflow: scroll;
+}
+.sepet {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  border: 5px solid pink;
+  overflow: scroll;
+}
