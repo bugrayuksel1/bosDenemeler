@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  width: 100vw;
+  overflow: hidden;
+  height: 100vh;
+}
+.products {
+  display: flex;
+  justify-content: flex-start;
+  width: 70%;
+  overflow: auto;
+  direction: rtl; /* Scroll barı sola hizalar */
+}
+.card {
+  width: 30%;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,40 @@
+.sepet-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.link img {
+  width: auto;
+  height: 35px;
+}
+.sepet-products {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+.sepet-products li {
+  border: 1px solid green;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sepet-products button {
+  margin-left: 5px;
+  background-color: green;
+}
+.sepet-products button:hover {
+  background-color: rgb(110, 110, 110);
+}
