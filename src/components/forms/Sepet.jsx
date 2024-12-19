@@ -1,7 +1,12 @@
 import "./styles/sepet.css";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../ui/Button";
-import { addToCard, decrement, removeFromCard } from "../../redux/cardSlice";
+import {
+  addToCard,
+  decrement,
+  discount,
+  removeFromCard,
+} from "../../redux/cardSlice";
 import { Link } from "react-router-dom";
 import assets from "../../assets";
 const Sepet = ({ cardItemss, toplamFiyat }) => {
@@ -10,15 +15,18 @@ const Sepet = ({ cardItemss, toplamFiyat }) => {
 
   const handleAddToCard = (product) => {
     dispatch(addToCard(product));
+    dispatch(discount());
   };
 
   const handleNegativeCard = (product) => {
     dispatch(decrement(product));
+    dispatch(discount());
   };
 
   const handleRemoveFromCard = (product) => {
     dispatch(removeFromCard(product));
   };
+  console.log(cardItems);
 
   return (
     <div className="sepet-container">

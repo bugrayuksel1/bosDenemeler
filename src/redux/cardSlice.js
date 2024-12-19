@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const cardSlice = createSlice({
+  //sepeti for'la dön. if'le kontrol et. discount function öyle yaz.
+  //indiirim ve eksiltmeyi aynı fonksiyonda yaz. ürünsayısı 5 ve üzerinde mi??
   name: "card",
   initialState: {
     items: [],
@@ -35,8 +37,19 @@ export const cardSlice = createSlice({
 
       state.items = state.items.filter((item) => item.id !== product.id);
     },
+
+    discount: (state) => {
+      state.items.forEach((item) => {
+        if (item.quantity >= 5) {
+          item.discountPrice = item.price * 0.9;
+        } else {
+          item.discountPrice = item.price;
+        }
+      });
+    },
   },
 });
 
-export const { addToCard, decrement, removeFromCard } = cardSlice.actions;
+export const { addToCard, decrement, removeFromCard, discount } =
+  cardSlice.actions;
 export default cardSlice.reducer;

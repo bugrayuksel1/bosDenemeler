@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "../components/ui/Button";
 import Sepet from "../components/forms/Sepet";
 import { useSelector } from "react-redux";
@@ -8,11 +7,14 @@ function Card() {
   const cardItems = useSelector((state) => state.card.items);
 
   const toplamFiyat = cardItems.reduce(
-    (total, item) => total + item.price * item.quantity,
+    (total, item) =>
+      total +
+      (item.discountPrice ? item.discountPrice : item.price) * item.quantity,
     0
   ); // bu fonksiyon önemli, alıştırma yapsan iyi olur.
 
-  // product boyutlarıyla ilgilen, diğerleri gözükmüyor
+  // Math.round(0.9)
+
   return (
     <div className="container">
       <div className="product">
@@ -21,7 +23,7 @@ function Card() {
 
       <div className="price">
         <div className="totalPrice">
-          Fiyat: {toplamFiyat}
+          <h2>Fiyat: {Math.round(toplamFiyat)}</h2>
           <Button>Alışverişi Tamamla</Button>
         </div>
         <div className="configuration">
