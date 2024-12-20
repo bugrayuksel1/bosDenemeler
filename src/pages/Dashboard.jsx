@@ -11,6 +11,7 @@ function Dashboard() {
       0
     )
   );
+
   return (
     <div className="container">
       <div className="products">

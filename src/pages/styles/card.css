@@ -1,7 +1,6 @@
-.container {
+.card-container {
   width: 100vw;
   height: 100vh;
-  border: 2px solid red;
 }
 .product {
   display: flex;

@@ -29,6 +29,19 @@
   border-radius: 10px;
   justify-content: center;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.info {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  gap: 5px;
+}
+.info img {
+  width: 25px;
+  height: 25px;
 }
 .productList li button {
   background-color: rgb(118, 40, 190);
@@ -36,3 +49,10 @@
 .productList li button:hover {
   background-color: rgb(131, 114, 146);
 }
+
+/* 
+.PopUp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */

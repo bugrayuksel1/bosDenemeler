@@ -16,7 +16,7 @@ function Card() {
   // Math.round(0.9)
 
   return (
-    <div className="container">
+    <div className="card-container">
       <div className="product">
         <Sepet cardItems={cardItems} toplamFiyat={toplamFiyat} />
       </div>

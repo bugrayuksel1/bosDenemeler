@@ -6,10 +6,23 @@ import "./styles/productlist.css";
 import assets from "../../assets";
 import { Link } from "react-router-dom";
 import { fetchProducts } from "../../services/api";
+import PopUp from "./PopUp";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleDetail = () => {
+    setIsPopUpOpen(true);
+    setSelectedProduct();
+  };
+
+  const handleCloseDetail = () => {
+    setIsPopUpOpen(false);
+    setSelectedProduct(null);
+  };
 
   const handleAddToCard = (product) => {
     const quantity = 1;
@@ -27,28 +40,12 @@ const ProductList = () => {
     console.log("products", products);
   }, []);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch("https://dummyjson.com/products", {
-  //         method: "GET",
-  //         headers: { "Content-Type": "application-json" },
-  //       });
-  //       if (!response.ok) {
-  //         throw new Error("Bağlantı sağlanamadı");
-  //       }
-  //       const data = await response.json();
-  //       setProducts(data.products);
-  //     } catch (error) {
-  //       console.log("hata oluştu", error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
   //ayrı bir klasöre al fetch'i
   //.env dosyası oluşturup veriyi ordan çek.
   //then-catch kullan fetch'de
+
+  // Link to= "#",  sayfa yenilenmeden mevcut sayfayla aynı yerde olduğunu belirtir
+
   return (
     <div className="productList-container">
       <h2>Merhaba, Ürün Listesi: </h2>
@@ -59,8 +56,13 @@ const ProductList = () => {
             {product.title} <br /> {product.price}
             <br />
             <div className="info">
-              <Link>
-                <img src={assets.icons.info} alt="info" />
+              <img
+                src={assets.icons.info}
+                alt="info"
+                onClick={handleDetail}
+              ></img>
+              <Link to="#" onClick={selectedProduct?.description}>
+                Detay
               </Link>
             </div>
             <Button type="button" onClick={() => handleAddToCard(product)}>
@@ -69,6 +71,7 @@ const ProductList = () => {
           </li>
         ))}
       </ul>
+      {isPopUpOpen && <PopUp handleCloseDetail={handleCloseDetail} />}
     </div>
   );
 };
