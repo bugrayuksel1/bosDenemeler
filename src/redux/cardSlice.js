@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchProducts } from "../services/api";
 
 export const cardSlice = createSlice({
   //sepeti for'la dön. if'le kontrol et. discount function öyle yaz.

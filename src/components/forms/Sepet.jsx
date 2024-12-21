@@ -26,7 +26,6 @@ const Sepet = ({ cardItemss, toplamFiyat }) => {
   const handleRemoveFromCard = (product) => {
     dispatch(removeFromCard(product));
   };
-  console.log(cardItems);
 
   return (
     <div className="sepet-container">

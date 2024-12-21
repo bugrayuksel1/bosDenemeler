@@ -14,14 +14,13 @@ const ProductList = () => {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const handleDetail = () => {
+  const handleDetail = (product) => {
     setIsPopUpOpen(true);
-    setSelectedProduct();
+    setSelectedProduct(product);
   };
 
   const handleCloseDetail = () => {
     setIsPopUpOpen(false);
-    setSelectedProduct(null);
   };
 
   const handleAddToCard = (product) => {
@@ -37,7 +36,6 @@ const ProductList = () => {
       }
     };
     getProducts();
-    console.log("products", products);
   }, []);
 
   //ayrı bir klasöre al fetch'i
@@ -59,9 +57,9 @@ const ProductList = () => {
               <img
                 src={assets.icons.info}
                 alt="info"
-                onClick={handleDetail}
+                onClick={() => handleDetail(product)}
               ></img>
-              <Link to="#" onClick={selectedProduct?.description}>
+              <Link to="#" onClick={() => handleDetail(product)}>
                 Detay
               </Link>
             </div>
@@ -71,7 +69,12 @@ const ProductList = () => {
           </li>
         ))}
       </ul>
-      {isPopUpOpen && <PopUp handleCloseDetail={handleCloseDetail} />}
+      {isPopUpOpen && (
+        <PopUp
+          product={selectedProduct}
+          handleCloseDetail={handleCloseDetail}
+        />
+      )}
     </div>
   );
 };

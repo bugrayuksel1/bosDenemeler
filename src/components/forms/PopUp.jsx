@@ -5,20 +5,8 @@ import { useEffect, useState } from "react";
 import { fetchProducts } from "../../services/api";
 import { Link } from "react-router-dom";
 
-const PopUp = () => {
+const PopUp = ({ product, handleCloseDetail }) => {
   const [products, setProducts] = useState([]);
-  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-
-  const handleDetail = () => {
-    setIsPopUpOpen(true);
-    setSelectedProduct(product);
-  };
-
-  const handleCloseDetail = () => {
-    setIsPopUpOpen(false);
-    setSelectedProduct(null);
-  };
 
   useEffect(() => {
     const getDescriptions = async () => {
@@ -33,17 +21,16 @@ const PopUp = () => {
   return (
     <div className="popUp-container">
       <div className="exit">
-        <img src={assets.icons.exit} onClick={handleCloseDetail(product)} />
+        <img src={assets.icons.exit} onClick={handleCloseDetail} />
       </div>
       <div className="description">
-        {products.map((product) => (
-          <div key={product.id}>{product.description}</div>
-        ))}
+        <h4>
+          {product.title} <br /> {product.description}
+        </h4>
       </div>
 
       <Button onClick={handleCloseDetail}>Anladım</Button>
     </div>
   );
 };
-
 export default PopUp;
